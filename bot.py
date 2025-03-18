@@ -27,7 +27,7 @@ from botcity.web import WebBot, Browser, By
 # Import for integration with BotCity Maestro SDK
 from botcity.maestro import *
 
-from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Disable errors if we are not connected to Maestro
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
@@ -81,10 +81,10 @@ def test_process(maestro, bot, execution):
     bot.headless = False
 
     # Uncomment to change the default Browser to Firefox
-    bot.browser = Browser.FIREFOX
+    bot.browser = Browser.CHROME
 
     # Uncomment to set the WebDriver path
-    bot.driver_path = GeckoDriverManager().install()
+    bot.driver_path = ChromeDriverManager().install()
 
     # Opens the BotCity website.
     bot.browse("https://www.google.com/")
@@ -100,7 +100,7 @@ def test_process(maestro, bot, execution):
 
     bot.maximize_window()
 
-    # Extrair valor da ação:
+    # Extrair valor da aÃ§Ã£o:
     price = get_stock_price(bot)
     
     stock_info = {
@@ -153,10 +153,10 @@ def orquestration_process(maestro, bot, execution):
     bot.headless = False
 
     # Uncomment to change the default Browser to Firefox
-    bot.browser = Browser.FIREFOX
+    bot.browser = Browser.CHROME
 
     # Uncomment to set the WebDriver path
-    bot.driver_path = GeckoDriverManager().install()
+    bot.driver_path = ChromeDriverManager().install()
 
     # Opens the BotCity website.
     bot.browse("https://www.google.com/")
@@ -179,7 +179,7 @@ def orquestration_process(maestro, bot, execution):
     bot.maximize_window()
 
     while datapool.has_next():
-        # Buscar o próximo item do Datapool
+        # Buscar o prÃ³ximo item do Datapool
         item = datapool.next(task_id=execution.task_id)
         if item is None:
             # O item pode ser None se outro processo o consumiu antes
@@ -215,7 +215,7 @@ def orquestration_process(maestro, bot, execution):
                     }
                 )
 
-            # Finalizando como 'DONE' após processamento
+            # Finalizando como 'DONE' apÃ³s processamento
             item.report_done()
 
         except Exception as error:
