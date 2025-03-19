@@ -3,7 +3,7 @@ name: Atualizar a versão mais recente do Bot no Maestro.
 on:
     push:
       branches:
-        - main
+        - master
 
 jobs:
     update-latest:
@@ -26,7 +26,7 @@ jobs:
             # Use a função de atualização.
             update: true
             # ID do bot no Maestro.
-            botId: 'botStock'
+            botId: 'botPython'
             # Tecnologia utilizada no bot
             technology: 'python'
             # Caminho da raiz do projeto onde ficará o .zip/.jar gerado.
