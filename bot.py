@@ -34,8 +34,6 @@ BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
 def main(env):
-
-    
     # Runner passes the server url, the id of the task being executed,
     # the access token and the parameters that this task receives (when applicable).
     maestro = BotMaestroSDK.from_sys_args()
