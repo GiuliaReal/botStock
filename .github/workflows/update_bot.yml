@@ -19,7 +19,7 @@ jobs:
         run: ./build.sh
       - name: Utilizando a action Botcity.
         # Usando a versão v1.0.0 do botcity-action-bots
-        uses: botcity-dev/botcity-action-bots@v1.0.0
+        uses: botcity-dev/botcity-action-bots@v1.0.6
         with:
           # Use a função de atualização.
           update: true
