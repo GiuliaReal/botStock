@@ -1,0 +1,38 @@
+name: Atualizar a versão mais recente do Bot no Maestro.
+
+on:
+    push:
+      branches:
+        - main
+
+jobs:
+    update-latest:
+      name: Atualize a versão mais recente do Bot no BotCity Maestro.
+      # Executando na versão mais recente do Ubuntu.
+      runs-on: ubuntu-latest
+      jobs:
+        # Instalando o projeto.
+        - uses: actions/checkout@v3
+        # Tornando `build.sh` executável
+        - name: Obtenha permissão para utilizar o build.
+          run: chmod +x build.sh
+        # Executando o build.
+        - name: Executando o build.
+          run: ./build.sh
+        - name: Utilizando a action Botcity.
+         # Usando a versão v1.0.0 do botcity-action-bots
+          uses: botcity-dev/botcity-action-bots@v1.0.0
+          with:
+            # Use a função de atualização.
+            update: true
+            # ID do bot no Maestro.
+            botId: 'botStock'
+            # Tecnologia utilizada no bot
+            technology: 'python'
+            # Caminho da raiz do projeto onde ficará o .zip/.jar gerado.
+            botPath: './stockBot.zip'
+          env:
+            # As secrets devem ser configurados em seu repositório.
+            LOGIN: ${{ secrets.LOGIN }}
+            SERVER: ${{ secrets.SERVER }}
+            KEY: ${{ secrets.KEY }}
