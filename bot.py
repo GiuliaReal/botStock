@@ -86,6 +86,8 @@ def test_process(maestro, bot, execution):
     # Uncomment to set the WebDriver path
     bot.driver_path = ChromeDriverManager().install()
 
+    print("Iniciando pesquisa...")
+
     # Opens the BotCity website.
     bot.browse("https://www.google.com/")
 
